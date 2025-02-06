@@ -1,19 +1,19 @@
 # PP-OCRv4_OpenVINO
-
+![PaddleOCR_OpenVINO](./images/ppocr_openvino.png)
 ## Introduction
-PP-OCRv4_OpenVINO is a demo project that demonstrates how to perform inference using the PP-OCRv4 model with OpenVINO. The PP-OCRv4 model is an advanced Optical Character Recognition (OCR) model that can recognize text in images with high accuracy.
+PP-OCRv4_OpenVINO is a demo project that demonstrates how to perform inference using the [PP-OCRv4](https://github.com/PaddlePaddle/PaddleOCR/blob/main/README_en.md)  model with [OpenVINO](https://docs.openvino.ai/2024/index.html). The [PP-OCRv4 ](https://github.com/PaddlePaddle/PaddleOCR/blob/main/README_en.md) model is a remarkable general optical character recognition (OCR) solution, which not only provides **Chinese and English** models in general scenarios, but also provides multilingual models covering **80** languages.
 
 ## Installation
 To install the necessary dependencies for this project, follow these steps:
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/yourusername/PP-OCRv4_OpenVINO.git
+    git clone https://github.com/openvino-book/PP-OCRv4_OpenVINO.git
     cd PP-OCRv4_OpenVINO
     ```
 
 2. Create a virtual environment and activate it:
-    ```sh
+    ```shyi
     python3 -m venv venv
     source venv/bin/activate
     ```
@@ -23,23 +23,38 @@ To install the necessary dependencies for this project, follow these steps:
     pip install -r requirements.txt
     ```
 
-4. Install OpenVINO:
-    Follow the instructions on the [OpenVINO documentation](https://docs.openvino.ai/latest/openvino_docs_install_guides_installing_openvino.html) to install OpenVINO.
+4. Download the PP-OCRv4 Model to PP-OCRv4_OpenVINO folder:
+    ```sh
+    # Download the detection model of PP-OCRv4
+    wget https://paddleocr.bj.bcebos.com/PP-OCRv4/chinese/ch_PP-OCRv4_det_infer.tar && tar -xvf ch_PP-OCRv4_det_infer.tar
+
+    # Download the recognition model of PP-OCRv4
+    wget https://paddleocr.bj.bcebos.com/PP-OCRv4/chinese/ch_PP-OCRv4_rec_infer.tar && tar -xvf ch_PP-OCRv4_rec_infer.tar
+
+    # Download the angle classifier of the PP-OCRv4
+    wget https://paddleocr.bj.bcebos.com/dygraph_v2.0/ch/ch_ppocr_mobile_v2.0_cls_infer.tar && tar -xvf ch_ppocr_mobile_v2.0_cls_infer.tar
+    ```
 
 ## Quick Start
 To quickly start using the PP-OCRv4_OpenVINO project, follow these steps:
 
-1. Download the PP-OCRv4 model and convert it to the OpenVINO format using the Model Optimizer.
-
-2. Run the inference script:
+1. Run the inference script:
     ```sh
-    python infer.py --image_path path/to/your/image.jpg --model_path path/to/your/model.xml
+    python main.py --image_dir images/general_ocr_006.png \
+        --det_model_dir ch_PP-OCRv4_det_infer/inference.pdmodel \
+        --det_model_device CPU \
+        --rec_model_dir ch_PP-OCRv4_rec_infer/inference.pdmodel \
+        --rec_model_device CPU \
+        --cls_model_dir ch_ppocr_mobile_v2.0_cls_infer/inference.pdmodel \
+        --cls_model_device CPU \
+        --use_angle_cls True
     ```
 
-3. The recognized text will be printed to the console.
+2. The recognized text will be printed to the console.
+![Inference Result](./images/run.png)
 
 ## License
 This project is licensed under the Apache License 2.0. See the [LICENSE](LICENSE) file for more details.
 
 ## Acknowledgment
-This project is based on the PP-OCRv4 model developed by PaddlePaddle. We would like to thank the PaddlePaddle team for their contributions to the OCR community.
+This project is based on the PP-OCRv4 model from [PaddleOCR](https://github.com/PaddlePaddle/PaddleOCR) and most of inference code comes from [OnnxOCR](https://github.com/jingsongliujing/OnnxOCR). We would like to thank the PaddleOCR team and @[jingsongliujing](https://github.com/jingsongliujing) for their contributions to the OCR community.
