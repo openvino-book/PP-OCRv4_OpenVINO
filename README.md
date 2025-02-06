@@ -1,5 +1,8 @@
 # PP-OCRv4_OpenVINO
-![PaddleOCR_OpenVINO](./images/ppocr_openvino.png)
+<div style="text-align: center;">
+    <img src="./images/ppocr_openvino.png" alt="PaddleOCR_OpenVINO">
+</div>
+
 ## Introduction
 PP-OCRv4_OpenVINO is a demo project that demonstrates how to perform inference using the [PP-OCRv4](https://github.com/PaddlePaddle/PaddleOCR/blob/main/README_en.md)  model with [OpenVINO](https://docs.openvino.ai/2024/index.html). The [PP-OCRv4 ](https://github.com/PaddlePaddle/PaddleOCR/blob/main/README_en.md) model is a remarkable general optical character recognition (OCR) solution, which not only provides **Chinese and English** models in general scenarios, but also provides multilingual models covering **80** languages.
 
