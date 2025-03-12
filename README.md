@@ -58,6 +58,8 @@ To quickly start using the PP-OCRv4_OpenVINO project, follow these steps:
 2. The recognized text will be printed to the console.
 ![Inference Result](./images/run.png)
 
+## Support other inference engines
+Refer to [How to Support Other Inference Engines](./How to support other inference engines.md)
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
